@@ -84,7 +84,8 @@ export const PROPERTIES = [
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Properties", href: "/properties" },
-  { label: "Projects", href: "/projects" }, // Placeholder for now
+  { label: "Floor Plans", href: "/plans" },
+  { label: "Projects", href: "/projects" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

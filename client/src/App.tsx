@@ -10,6 +10,7 @@ import Projects from "@/pages/projects";
 import Contact from "@/pages/contact";
 import About from "@/pages/about";
 import PropertyDetails from "@/pages/property-details";
+import Plans from "@/pages/plans";
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/properties" component={Properties} />
       <Route path="/projects" component={Projects} />
+      <Route path="/plans" component={Plans} />
       <Route path="/contact" component={Contact} />
       <Route path="/about" component={About} />
       <Route path="/property/:id" component={PropertyDetails} />
