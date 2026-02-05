@@ -5,59 +5,51 @@ import { PROPERTIES } from "@/lib/constants";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { Separator } from "@/components/ui/separator";
+import { motion } from "framer-motion";
 
 export default function Properties() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-[#050505] text-white">
       <Navbar />
       
-      {/* Page Header */}
-      <div className="bg-primary pt-32 pb-16 text-white">
+      <div className="pt-40 pb-20 border-b border-white/5">
         <div className="container mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Our Collection</h1>
-          <p className="text-white/70 max-w-xl">Explore our handpicked selection of premium residences, from sky villas to sprawling estates.</p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <span className="text-secondary tracking-[0.4em] text-xs uppercase font-bold mb-4 block">Curated Collection</span>
+            <h1 className="text-7xl font-serif font-bold tracking-tighter mb-4">Prime <span className="italic text-secondary">Estates</span></h1>
+            <p className="text-white/40 max-w-xl text-lg font-light">Explore a limited selection of architectural masterpieces designed for the visionary.</p>
+          </motion.div>
         </div>
       </div>
       
-      <div className="container mx-auto px-6 py-16">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Sidebar Filters */}
-          <aside className="w-full lg:w-64 shrink-0 space-y-8">
-            <div>
-              <h3 className="font-serif font-bold text-lg mb-4">Filter By</h3>
-              <Separator className="mb-6" />
+      <div className="container mx-auto px-6 py-20">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-16">
+          {/* Elite Filters */}
+          <aside className="lg:col-span-3 space-y-12">
+            <div className="p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 sticky top-32">
+              <h3 className="font-serif text-2xl font-bold mb-8">Refine Search</h3>
               
-              <div className="space-y-6">
-                <div>
-                  <h4 className="font-medium mb-3 text-sm uppercase tracking-wider text-muted-foreground">Property Type</h4>
-                  <div className="space-y-2">
-                    {["Apartment", "Villa", "Penthouse", "Loft"].map((type) => (
-                      <div key={type} className="flex items-center space-x-2">
-                        <Checkbox id={type} />
-                        <Label htmlFor={type} className="font-normal">{type}</Label>
+              <div className="space-y-10">
+                <div className="space-y-4">
+                  <h4 className="text-[10px] uppercase tracking-[0.3em] font-black text-secondary">Asset Type</h4>
+                  <div className="space-y-3">
+                    {["Apartment", "Villa", "Penthouse"].map((type) => (
+                      <div key={type} className="flex items-center space-x-3 group cursor-pointer">
+                        <Checkbox id={type} className="border-white/20 data-[state=checked]:bg-secondary" />
+                        <Label htmlFor={type} className="font-light text-white/60 group-hover:text-white transition-colors cursor-pointer">{type}</Label>
                       </div>
                     ))}
                   </div>
                 </div>
                 
-                <div>
-                  <h4 className="font-medium mb-3 text-sm uppercase tracking-wider text-muted-foreground">Location</h4>
-                  <div className="space-y-2">
-                    {["Jubilee Hills", "Banjara Hills", "Gachibowli", "Hitech City", "Kondapur"].map((loc) => (
-                      <div key={loc} className="flex items-center space-x-2">
-                        <Checkbox id={loc} />
-                        <Label htmlFor={loc} className="font-normal">{loc}</Label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                
-                <div>
-                  <h4 className="font-medium mb-3 text-sm uppercase tracking-wider text-muted-foreground">Price Range</h4>
-                  <Slider defaultValue={[33]} max={100} step={1} className="my-4" />
-                  <div className="flex justify-between text-sm text-muted-foreground">
-                    <span>$500k</span>
+                <div className="space-y-6">
+                  <h4 className="text-[10px] uppercase tracking-[0.3em] font-black text-secondary">Investment Scale</h4>
+                  <Slider defaultValue={[50]} max={100} step={1} className="[&_[role=slider]]:bg-secondary" />
+                  <div className="flex justify-between text-[10px] uppercase font-bold text-white/40">
+                    <span>$1.0M</span>
                     <span>$10M+</span>
                   </div>
                 </div>
@@ -65,11 +57,19 @@ export default function Properties() {
             </div>
           </aside>
           
-          {/* Grid */}
-          <div className="flex-1">
-            <div className="grid md:grid-cols-2 gap-8">
-              {PROPERTIES.map((property) => (
-                <PropertyCard key={property.id} {...property} />
+          {/* Master Grid */}
+          <div className="lg:col-span-9">
+            <div className="grid md:grid-cols-2 gap-12">
+              {PROPERTIES.map((property, idx) => (
+                <motion.div
+                    key={property.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                >
+                    <PropertyCard {...property} />
+                </motion.div>
               ))}
             </div>
           </div>

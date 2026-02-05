@@ -1,213 +1,192 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { PropertyCard } from "@/components/property-card";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useRef } from "react";
+import { ArrowRight, Star, ShieldCheck, Trophy, Sparkles, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { PROPERTIES, FEATURES, TESTIMONIALS } from "@/lib/constants";
-import { ArrowRight, Search, CheckCircle2 } from "lucide-react";
-import { Link } from "wouter";
 
 export default function Home() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll();
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+  
+  const heroOpacity = useTransform(smoothProgress, [0, 0.2], [1, 0]);
+  const heroScale = useTransform(smoothProgress, [0, 0.2], [1, 1.1]);
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-secondary selection:text-primary overflow-x-hidden" ref={containerRef}>
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      {/* Cinematic Hero */}
+      <section className="relative h-screen flex items-center justify-center">
+        <motion.div 
+          style={{ opacity: heroOpacity, scale: heroScale }}
+          className="absolute inset-0 z-0"
+        >
           <img 
             src="/images/hero-exterior.png" 
-            alt="Luxury Real Estate" 
-            className="w-full h-full object-cover"
+            alt="Luxury High Rise" 
+            className="w-full h-full object-cover grayscale-[0.2]"
           />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-[#050505]" />
+        </motion.div>
+
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="inline-block px-4 py-1 border border-secondary/30 rounded-full text-secondary text-xs uppercase tracking-[0.4em] mb-8 backdrop-blur-sm bg-secondary/5">
+              The Epitome of Living
+            </span>
+            <h1 className="text-7xl md:text-[10rem] font-serif font-black leading-[0.85] tracking-tighter mb-12">
+              PRESTIGE<br/>
+              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary/70 to-secondary/30">ESTATES</span>
+            </h1>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-16">
+              <Button className="bg-secondary hover:bg-white text-primary px-12 py-8 rounded-none text-xl font-bold transition-all duration-500 group">
+                EXPLORE CURATED UNITS
+                <motion.span animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
+                  <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
+                </motion.span>
+              </Button>
+              <div className="flex items-center gap-4 text-left">
+                <div className="h-12 w-[1px] bg-secondary/30" />
+                <p className="text-sm font-light tracking-widest text-white/50 uppercase leading-relaxed">
+                  Redefining the<br/>Architectural Landscape
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
         
-        <div className="relative z-10 container mx-auto px-6 text-center text-white space-y-8 animate-in fade-in zoom-in duration-1000">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight">
-            Find Your <span className="italic text-secondary">Sanctuary</span>
-          </h1>
-          <p className="text-lg md:text-xl max-w-2xl mx-auto text-white/90 font-light tracking-wide">
-            Discover a curated collection of the most exclusive properties in Hyderabad's prime locations.
-          </p>
-          
-          {/* Search Box */}
-          <div className="bg-white p-4 max-w-4xl mx-auto mt-12 rounded-sm shadow-2xl grid md:grid-cols-4 gap-4">
-            <div className="md:col-span-1">
-              <Select>
-                <SelectTrigger className="w-full border-none shadow-none rounded-none text-primary font-medium">
-                  <SelectValue placeholder="Location" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="jubilee">Jubilee Hills</SelectItem>
-                  <SelectItem value="banjara">Banjara Hills</SelectItem>
-                  <SelectItem value="gachibowli">Gachibowli</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="md:col-span-1 border-l border-gray-100 pl-4">
-              <Select>
-                <SelectTrigger className="w-full border-none shadow-none rounded-none text-primary font-medium">
-                  <SelectValue placeholder="Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="apartment">Apartment</SelectItem>
-                  <SelectItem value="villa">Villa</SelectItem>
-                  <SelectItem value="penthouse">Penthouse</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="md:col-span-1 border-l border-gray-100 pl-4">
-               <Select>
-                <SelectTrigger className="w-full border-none shadow-none rounded-none text-primary font-medium">
-                  <SelectValue placeholder="Price Range" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1m-2m">$1M - $2M</SelectItem>
-                  <SelectItem value="2m-5m">$2M - $5M</SelectItem>
-                  <SelectItem value="5m+">$5M+</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <Button className="w-full h-full rounded-none text-lg bg-primary hover:bg-primary/90">
-              Search <Search className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-        </div>
+        {/* Scroll Indicator */}
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50"
+        >
+          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-secondary" />
+          <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Scroll</span>
+        </motion.div>
       </section>
 
-      {/* Featured Properties */}
-      <section className="py-24 bg-background">
+      {/* Philosophy - Parallax Content */}
+      <section className="py-40 relative">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-end mb-16">
-            <div>
-              <span className="text-secondary font-medium tracking-widest uppercase text-sm">Exclusive Listings</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mt-3 text-primary">Featured Properties</h2>
-            </div>
-            <Link href="/properties">
-              <Button variant="outline" className="hidden md:flex rounded-none border-primary text-primary hover:bg-primary hover:text-white">
-                View All Properties <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PROPERTIES.slice(0, 3).map((property) => (
-              <PropertyCard key={property.id} {...property} />
-            ))}
-          </div>
-          
-          <div className="mt-12 text-center md:hidden">
-            <Link href="/properties">
-              <Button variant="outline" className="w-full rounded-none border-primary text-primary">
-                View All Properties
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-24 bg-primary text-white overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
-             <img src="/images/hero-interior.png" className="w-full h-full object-cover grayscale" />
-        </div>
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <span className="text-secondary font-medium tracking-widest uppercase text-sm">Our Philosophy</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight">
-                Redefining Luxury Real Estate in Hyderabad
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="space-y-12"
+            >
+              <h2 className="text-6xl md:text-8xl font-serif font-bold leading-tight">
+                Architectural<br/>
+                <span className="text-secondary italic">Poetry.</span>
               </h2>
-              <p className="text-white/80 text-lg font-light leading-relaxed">
-                With over two decades of experience, Prestige Estates has established itself as the premier developer of luxury residences. We believe a home is more than just a structure; it's a sanctuary where life unfolds.
+              <p className="text-2xl font-light text-white/60 leading-relaxed max-w-xl">
+                We don't just build structures; we sculpt experiences. Every line, every texture, and every shadow is meticulously curated for the elite.
               </p>
-              
-              <div className="grid grid-cols-2 gap-6">
-                {FEATURES.map((feature, idx) => (
-                  <div key={idx} className="space-y-3">
-                    <feature.icon className="h-8 w-8 text-secondary" />
-                    <h3 className="text-xl font-serif font-bold">{feature.title}</h3>
-                    <p className="text-sm text-white/60">{feature.description}</p>
-                  </div>
-                ))}
+              <div className="grid grid-cols-2 gap-12">
+                <div className="space-y-4">
+                  <Star className="text-secondary w-8 h-8" />
+                  <h4 className="text-xl font-bold">Unrivaled Detail</h4>
+                  <p className="text-sm text-white/40">Hand-finished materials from the world's most exclusive quarries.</p>
+                </div>
+                <div className="space-y-4">
+                  <ShieldCheck className="text-secondary w-8 h-8" />
+                  <h4 className="text-xl font-bold">Ironclad Security</h4>
+                  <p className="text-sm text-white/40">Military-grade smart home integration with AI surveillance.</p>
+                </div>
               </div>
-              
-              <Link href="/about">
-                <Button className="bg-secondary hover:bg-secondary/90 text-white rounded-none px-8 py-6 text-lg mt-4">
-                  Learn More About Us
-                </Button>
-              </Link>
-            </div>
+            </motion.div>
+            
             <div className="relative">
-              <div className="relative aspect-[3/4] md:aspect-square">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                className="aspect-[4/5] overflow-hidden group"
+              >
                 <img 
                   src="/images/hero-interior.png" 
-                  alt="Interior" 
-                  className="w-full h-full object-cover shadow-2xl"
+                  className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" 
+                  alt="Interior Design" 
                 />
-                <div className="absolute -bottom-8 -left-8 bg-white p-8 shadow-xl max-w-xs hidden md:block">
-                  <p className="font-serif text-4xl font-bold text-primary mb-2">25+</p>
-                  <p className="text-muted-foreground uppercase tracking-widest text-sm">Years of Excellence</p>
-                </div>
-              </div>
+                <div className="absolute inset-0 border-[20px] border-white/5 m-8 pointer-events-none transition-all duration-1000 group-hover:m-4" />
+              </motion.div>
+              {/* Floating Badge */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -top-12 -right-12 w-40 h-40 flex items-center justify-center"
+              >
+                <div className="absolute inset-0 bg-secondary rounded-full opacity-20 blur-2xl" />
+                <svg viewBox="0 0 100 100" className="w-full h-full fill-white/20">
+                  <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                  <text className="text-[10px] uppercase tracking-[0.2em] font-bold">
+                    <textPath href="#circlePath">Best Luxury Developer • Global Award Winner • </textPath>
+                  </text>
+                </svg>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 bg-muted/30">
+      {/* Immersive Video/Atmosphere Section */}
+      <section className="py-40 bg-white text-primary">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-secondary font-medium tracking-widest uppercase text-sm">Testimonials</span>
-            <h2 className="text-4xl font-serif font-bold mt-3 text-primary">Client Experiences</h2>
+          <div className="flex flex-col items-center text-center space-y-12 mb-32">
+            <span className="text-secondary font-bold tracking-[0.5em] uppercase text-sm">State of Mind</span>
+            <h2 className="text-6xl md:text-9xl font-serif font-black tracking-tighter max-w-5xl leading-none">
+              WHERE DREAMS<br/><span className="italic text-secondary">RESIDE.</span>
+            </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {TESTIMONIALS.map((testimonial) => (
-              <div key={testimonial.id} className="bg-white p-8 shadow-sm border border-border/40 relative">
-                <div className="text-secondary text-6xl font-serif absolute top-4 left-6 opacity-20">"</div>
-                <p className="text-muted-foreground italic mb-6 relative z-10 leading-relaxed">
-                  {testimonial.content}
-                </p>
-                <div className="flex items-center gap-4">
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name} 
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 className="font-serif font-bold text-primary">{testimonial.name}</h4>
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider">{testimonial.role}</p>
-                  </div>
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              { icon: Sparkles, title: "Artistic Lobby", label: "Entrance" },
+              { icon: Trophy, title: "Sky Club", label: "Amenities" },
+              { icon: Building2, title: "Smart Living", label: "Technology" }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -20 }}
+                className="p-12 border border-black/5 flex flex-col items-center text-center space-y-6 hover:bg-secondary hover:text-white transition-all duration-700 cursor-pointer group"
+              >
+                <div className="w-20 h-20 bg-secondary/10 flex items-center justify-center rounded-full group-hover:bg-white/20">
+                  <item.icon size={32} className="text-secondary group-hover:text-white" />
                 </div>
-              </div>
+                <span className="text-xs uppercase tracking-[0.3em] font-bold opacity-40">{item.label}</span>
+                <h3 className="text-3xl font-serif font-bold">{item.title}</h3>
+                <p className="font-light opacity-60">Experience the future of residential excellence with bespoke services.</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
-      
-      {/* Call to Action */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src="/images/amenity-pool.png" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-primary/90" />
-        </div>
-        <div className="container mx-auto px-6 relative z-10 text-center text-white space-y-8">
-          <h2 className="text-4xl md:text-6xl font-serif font-bold">Ready to find your dream home?</h2>
-          <p className="text-xl max-w-2xl mx-auto text-white/80 font-light">
-            Schedule a private viewing of our exclusive properties today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-secondary hover:bg-secondary/90 text-white rounded-none px-8 py-6 text-lg">
-              Contact Us
-            </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary rounded-none px-8 py-6 text-lg">
-              View Properties
-            </Button>
+
+      {/* Dynamic Stats */}
+      <section className="py-40 border-y border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+            {[
+              { val: "25+", label: "Award Winning Projects" },
+              { val: "10k+", label: "Elite Residents" },
+              { val: "4.9", label: "Trust Rating" },
+              { val: "35y", label: "Legacy Excellence" }
+            ].map((stat, i) => (
+              <div key={i} className="text-center group">
+                <h4 className="text-6xl md:text-8xl font-serif font-bold text-secondary mb-4 transition-transform group-hover:scale-110">
+                  {stat.val}
+                </h4>
+                <p className="text-xs uppercase tracking-[0.4em] text-white/40">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
