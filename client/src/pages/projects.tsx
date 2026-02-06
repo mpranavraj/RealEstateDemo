@@ -14,7 +14,7 @@ const PROJECTS = [
     units: "500+",
     completion: "2027",
     area: "12 Acres",
-    investment: "$250M"
+    investment: "₹250Cr"
   },
   {
     title: "Lakeview Sanctuary",
@@ -25,7 +25,7 @@ const PROJECTS = [
     units: "120",
     completion: "2024",
     area: "8 Acres",
-    investment: "$85M"
+    investment: "₹85Cr"
   },
   {
     title: "Urban Horizon",
@@ -36,7 +36,7 @@ const PROJECTS = [
     units: "340",
     completion: "2028",
     area: "5 Acres",
-    investment: "$180M"
+    investment: "₹180Cr"
   }
 ];
 

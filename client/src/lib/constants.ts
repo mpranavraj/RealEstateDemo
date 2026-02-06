@@ -4,7 +4,7 @@ export const PROPERTIES = [
   {
     id: 1,
     title: "The Azure Heights",
-    price: "$2,500,000",
+    price: "₹2,500,000",
     location: "Financial District, Hyderabad",
     beds: 3,
     baths: 3,
@@ -17,7 +17,7 @@ export const PROPERTIES = [
   {
     id: 2,
     title: "Serenity Gardens",
-    price: "$1,800,000",
+    price: "₹1,800,000",
     location: "Gachibowli, Hyderabad",
     beds: 4,
     baths: 4,
@@ -30,7 +30,7 @@ export const PROPERTIES = [
   {
     id: 3,
     title: "Skyline Avenue",
-    price: "$3,200,000",
+    price: "₹3,200,000",
     location: "Jubilee Hills, Hyderabad",
     beds: 5,
     baths: 6,
@@ -43,7 +43,7 @@ export const PROPERTIES = [
   {
     id: 4,
     title: "Emerald Estate",
-    price: "$1,200,000",
+    price: "₹1,200,000",
     location: "Kondapur, Hyderabad",
     beds: 3,
     baths: 2,
@@ -56,7 +56,7 @@ export const PROPERTIES = [
   {
     id: 5,
     title: "The Grandeur",
-    price: "$4,500,000",
+    price: "₹4,500,000",
     location: "Banjara Hills, Hyderabad",
     beds: 6,
     baths: 7,
@@ -69,7 +69,7 @@ export const PROPERTIES = [
   {
     id: 6,
     title: "Urban Loft",
-    price: "$950,000",
+    price: "₹950,000",
     location: "Hitech City, Hyderabad",
     beds: 2,
     baths: 2,

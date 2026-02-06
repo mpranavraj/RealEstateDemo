@@ -10,18 +10,18 @@ const FLOOR_PLANS = {
     sqft: "5067", beds: "5", kitchens: "2", baths: "6",
     image: "https://images.unsplash.com/photo-1580587767303-93630f95c432?auto=format&fit=crop&q=80&w=2000",
     title: "The Peak - Signature Unit 01",
-    price: "$2.5M",
+    price: "₹2.5Cr",
     features: ["Private Elevator", "Italian Kitchen", "Maid Quarter"]
   },
   2: {
     sqft: "5192", beds: "5", kitchens: "2", baths: "6",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=2000",
     title: "The Peak - Signature Unit 02",
-    price: "$2.8M",
+    price: "₹2.8Cr",
     features: ["Sunrise View", "Master Terrace", "Wine Cellar"]
   },
-  3: { sqft: "4850", beds: "4", kitchens: "2", baths: "5", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000", title: "Luxury Suite 03", price: "$2.1M", features: ["Pool View", "Smart Glass"] },
-  4: { sqft: "5500", beds: "6", kitchens: "3", baths: "7", image: "https://images.unsplash.com/photo-1600566753190-17f0bbc2a6c3?auto=format&fit=crop&q=80&w=2000", title: "Presidential Unit 04", price: "$4.5M", features: ["Private Pool", "Gym Room", "Library"] },
+  3: { sqft: "4850", beds: "4", kitchens: "2", baths: "5", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000", title: "Luxury Suite 03", price: "₹2.1Cr", features: ["Pool View", "Smart Glass"] },
+  4: { sqft: "5500", beds: "6", kitchens: "3", baths: "7", image: "https://images.unsplash.com/photo-1600566753190-17f0bbc2a6c3?auto=format&fit=crop&q=80&w=2000", title: "Presidential Unit 04", price: "₹4.5Cr", features: ["Private Pool", "Gym Room", "Library"] },
 };
 
 export default function Plans() {
