@@ -102,7 +102,7 @@ export const TESTIMONIALS = [
     id: 1,
     name: "Rajesh Kumar",
     role: "Business Owner",
-    content: "Buying a home with Prestige Estates was a seamless experience. The attention to detail in their properties is unmatched.",
+    content: "Buying a home with Govira Estates was a seamless experience. The attention to detail in their properties is unmatched.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
   },
   {

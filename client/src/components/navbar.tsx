@@ -32,7 +32,7 @@ export function Navbar() {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/">
           <a className="text-2xl font-serif font-bold tracking-tight">
-            PRESTIGE<span className="text-secondary">.</span>
+            Govira<span className="text-secondary">.</span>
           </a>
         </Link>
 

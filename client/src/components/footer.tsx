@@ -9,7 +9,7 @@ export function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <h3 className="text-3xl font-serif font-bold">PRESTIGE<span className="text-secondary">.</span></h3>
+            <h3 className="text-3xl font-serif font-bold">Govira<span className="text-secondary">.</span></h3>
             <p className="text-white/70 leading-relaxed">
               Crafting landmarks that redefine luxury living. We build homes, not just houses, with a legacy of trust and excellence.
             </p>
@@ -38,7 +38,7 @@ export function Footer() {
               <li>123 Luxury Lane, Jubilee Hills</li>
               <li>Hyderabad, Telangana 500033</li>
               <li>+91 987 654 3210</li>
-              <li>info@prestigeestates.com</li>
+              <li>info@Goviraestates.com</li>
             </ul>
           </div>
 
@@ -55,7 +55,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
-          <p>&copy; 2024 Prestige Estates. All rights reserved.</p>
+          <p>&copy; 2026 Govira Estates. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white">Privacy Policy</a>
             <a href="#" className="hover:text-white">Terms of Service</a>

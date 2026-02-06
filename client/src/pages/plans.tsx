@@ -170,7 +170,7 @@ export default function Plans() {
                         </div>
                         <div className="mt-8 p-10 bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl text-left w-full group-hover:bg-secondary group-hover:text-primary transition-all duration-700">
                             <span className="text-xs uppercase tracking-widest font-bold opacity-50 mb-2 block">Milestone 0{idx+1}</span>
-                            <h4 className="text-2xl font-serif font-bold mb-4">Prestige Heights Phase {idx+1}</h4>
+                            <h4 className="text-2xl font-serif font-bold mb-4">Govira Heights Phase {idx+1}</h4>
                             <p className="text-sm font-light leading-relaxed max-w-xs">Revolutionizing the skyline with integrated smart technology and sustainable architecture.</p>
                         </div>
                     </div>

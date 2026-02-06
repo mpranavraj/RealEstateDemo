@@ -41,7 +41,7 @@ export default function Home() {
               The Epitome of Living
             </span>
             <h1 className="text-7xl md:text-[10rem] font-serif font-black leading-[0.85] tracking-tighter mb-12">
-              PRESTIGE<br/>
+              Govira<br/>
               <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary/70 to-secondary/30">ESTATES</span>
             </h1>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-16">

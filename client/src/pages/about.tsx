@@ -84,7 +84,7 @@ export default function About() {
                 </h2>
               </div>
               <p className="text-2xl font-light text-white/60 leading-relaxed max-w-xl">
-                Prestige Estates began with a simple vision: to create living spaces that inspire. Over three decades, we have grown from a boutique developer to one of the most trusted names in luxury real estate.
+                Govira Estates began with a simple vision: to create living spaces that inspire. Over three decades, we have grown from a boutique developer to one of the most trusted names in luxury real estate.
               </p>
               <p className="text-lg font-light text-white/40 leading-relaxed max-w-xl">
                 Our commitment to quality, transparency, and innovation has earned us the trust of over 10,000 families. We don't just build buildings — we build communities that endure.
@@ -107,7 +107,7 @@ export default function About() {
                 <img
                   src="/images/hero-exterior.png"
                   className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
-                  alt="Prestige Legacy"
+                  alt="Govira Legacy"
                 />
                 <div className="absolute inset-0 border-[20px] border-white/5 m-8 pointer-events-none transition-all duration-1000 group-hover:m-4" />
               </motion.div>
@@ -237,7 +237,7 @@ export default function About() {
             JOIN THE <span className="italic text-secondary">LEGACY</span>
           </h2>
           <p className="text-xl font-light text-white/40 max-w-2xl mx-auto">
-            Experience the Prestige difference — where every home is a masterpiece.
+            Experience the Govira difference — where every home is a masterpiece.
           </p>
           <Button className="bg-secondary hover:bg-white text-primary px-16 py-8 rounded-none text-xl font-bold transition-all duration-500 group">
             GET IN TOUCH

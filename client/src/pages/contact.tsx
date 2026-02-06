@@ -146,7 +146,7 @@ export default function Contact() {
                   {
                     icon: Mail,
                     title: "Email",
-                    lines: ["info@prestigeestates.com", "sales@prestigeestates.com"],
+                    lines: ["info@Goviraestates.com", "sales@Goviraestates.com"],
                   },
                   {
                     icon: Clock,
