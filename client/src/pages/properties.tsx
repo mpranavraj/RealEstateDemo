@@ -19,7 +19,7 @@ export default function Properties() {
             animate={{ opacity: 1, y: 0 }}
           >
             <span className="text-secondary tracking-[0.4em] text-xs uppercase font-bold mb-4 block">Curated Collection</span>
-            <h1 className="text-7xl font-serif font-bold tracking-tighter mb-4">Prime <span className="italic text-secondary">Estates</span></h1>
+            <h1 className="text-7xl font-serif font-bold tracking-tighter mb-4">Govira <span className="italic text-secondary">Estates</span></h1>
             <p className="text-white/40 max-w-xl text-lg font-light">Explore a limited selection of architectural masterpieces designed for the visionary.</p>
           </motion.div>
         </div>
